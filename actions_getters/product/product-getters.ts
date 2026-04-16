@@ -2,10 +2,12 @@
 import db from "@/db"
 import { products } from "@/db/schema"
 import { desc, eq, sql } from "drizzle-orm";
+import { cacheLife, cacheTag } from "next/cache";
 import { connection } from "next/server";
 
 
 export async function getFeaturedProducts (){
+    "use cache"
     const productData = await db.select().from(products).where(eq(products.status, "approved" )).orderBy(desc(products.voteCount));
 
     return productData
@@ -13,9 +15,15 @@ export async function getFeaturedProducts (){
 
 export async function getAllApprovedProducts() {
   const productsData = await db.select().from(products).where(eq(products.status, "approved" )).orderBy(desc(products.voteCount));
-
+  
   return productsData;
 }
+
+export async function getProductBySlug(slug:string){
+    const productData = await db.select().from(products).where(eq(products.slug,slug)).limit(1);
+    return productData?.[0] ?? null 
+}
+
 
 
 export async function getRecentlyLaunchedProducts() {
@@ -31,7 +39,8 @@ export async function getRecentlyLaunchedProducts() {
   );
 }
 
-export async function getProductBySlug(slug:string){
-    const productData = await db.select().from(products).where(eq(products.slug,slug)).limit(1);
-    return productData?.[0] ?? null 
+
+export async function getAllProducts(){
+    const productData = await db.select().from(products).orderBy(desc(products.createdAt));
+    return productData
 }

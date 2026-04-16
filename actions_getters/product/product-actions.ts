@@ -6,7 +6,7 @@ import { FormState } from "@/lib/types";
 import { productSchema } from "@/lib/zod-schema";
 import { z } from "zod";
 import { auth, currentUser } from "@clerk/nextjs/server";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag, updateTag } from "next/cache";
 import { eq, sql } from "drizzle-orm";
 
 
@@ -67,7 +67,6 @@ export const addProductAction = async (
       organizationId: orgId,
       userId,
     });
-
     return {
       success: true,
       message: "Product submitted successfully! It will be reviewed shortly.",
@@ -120,7 +119,6 @@ export const upvoteProductAction = async (productId: number) => {
       .where(eq(products.id, productId));
 
     revalidatePath("/");
-
     return {
       success: true,
       message: "Product upvoted successfully",

@@ -1,4 +1,4 @@
-"use cache"
+
 
 import { getFeaturedProducts, getProductBySlug } from '@/actions_getters/product/product-getters'
 import { Badge } from '@/components/ui/badge'
@@ -7,6 +7,8 @@ import SectionHeader from '@/components/web/Common/section-header'
 import VotingButtons from '@/components/web/Product/voting-buttons'
 import { ArrowLeftIcon, CalendarIcon, ExternalLinkIcon, Link, StarIcon, UserIcon } from 'lucide-react'
 import { notFound } from 'next/navigation'
+
+// export const dynamic = "force-dynamic";
 
 export const generateStaticParams = async () => {
     const products = await getFeaturedProducts() 

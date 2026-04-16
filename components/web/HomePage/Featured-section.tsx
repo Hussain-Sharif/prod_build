@@ -1,4 +1,3 @@
-"use cache"
 
 import { ArrowUpRightIcon, StarIcon } from "lucide-react"
 import SectionHeader from "../Common/section-header"
@@ -6,10 +5,9 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { getFeaturedProducts } from "@/actions_getters/product/product-getters"
 import ProductCard from "../Product/Product-card"
-
+import { cacheLife, cacheTag } from "next/cache"
 
 const FeaturedSection = async() => {
-
   const featuredProducts = await getFeaturedProducts()
 
   console.log("Featured products: ", featuredProducts)

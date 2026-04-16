@@ -4,6 +4,8 @@ import SectionHeader from "@/components/web/Common/section-header";
 import ProductExplorer from "@/components/web/Product/product-explorer";
 import { CompassIcon } from "lucide-react";
 
+export const dynamic = "force-static";
+
 export default async function ExplorePage() {
   const products = await getAllApprovedProducts();
 
