@@ -3,9 +3,10 @@ import { neon } from "@neondatabase/serverless";
 import { products } from "./schema";
 import { allProducts } from "./data";
 import { drizzle } from "drizzle-orm/neon-http";
+import db from "./index";
 
-const sql = neon(process.env.DATABASE_URL!); 
-const db = drizzle(sql);  
+// const sql = neon(process.env.DATABASE_URL!); 
+// const db = drizzle(sql);  
 
 async function main() {
   console.log("🌱 Seeding database...");
