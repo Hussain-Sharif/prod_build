@@ -1,12 +1,9 @@
 "use client";
-import {
-  downvoteProductAction,
-  upvoteProductAction,
-} from "@/lib/products/product-actions";
 import { cn } from "@/lib/utils";
 import { ChevronDownIcon, ChevronUpIcon } from "lucide-react";
 import { useOptimistic, useTransition } from "react";
 import { Button } from "@/components/ui/button";
+import { downvoteProductAction, upvoteProductAction } from "@/actions_getters/product/product-actions";
 
 export default function VotingButtons({
   hasVoted,
@@ -47,7 +44,7 @@ export default function VotingButtons({
       }}
     >
       <Button
-        // onClick={handleUpvote}
+        onClick={handleUpvote}
         variant="ghost"
         size="icon-sm"
         className={cn(
@@ -64,7 +61,7 @@ export default function VotingButtons({
         {optimisticVoteCount}
       </span>
       <Button
-        // onClick={handleDownvote}
+        onClick={handleDownvote}
         variant="ghost"
         size="icon-sm"
         disabled={isPending}

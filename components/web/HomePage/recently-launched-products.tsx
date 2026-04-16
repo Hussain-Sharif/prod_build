@@ -3,7 +3,7 @@ import { CalendarIcon, RocketIcon } from "lucide-react";
 import SectionHeader from "@/components/web/Common/section-header";
 import ProductCard from "../Product/Product-card";
 import EmptyState from "../Common/empty-state";
-import { getRecentlyLaunchedProducts } from "@/actions/product/product-select-actions";
+import { getRecentlyLaunchedProducts } from "@/actions_getters/product/product-getters";
 
 export default async function RecentlyLaunchedProducts() {
   const recentlyLaunchedProducts = await getRecentlyLaunchedProducts();

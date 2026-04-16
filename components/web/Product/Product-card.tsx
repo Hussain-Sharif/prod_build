@@ -33,11 +33,11 @@ export default function ProductCard({ product }: { product: ProductType }) {
               <CardDescription>{product.description}</CardDescription>
             </div>
             {/** Voting buttons */}
-            {/* <VotingButtons
+            <VotingButtons
               hasVoted={hasVoted}
               voteCount={product.voteCount}
               productId={product.id}
-            /> */}
+            />
           </div>
         </CardHeader>
         <CardFooter>
