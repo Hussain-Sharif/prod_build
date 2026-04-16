@@ -1,4 +1,4 @@
-
+"use cache"
 
 import { getFeaturedProducts, getProductBySlug } from '@/actions_getters/product/product-getters'
 import { Badge } from '@/components/ui/badge'
