@@ -1,13 +1,18 @@
+"use cache"
+
 import { ArrowUpRightIcon, StarIcon } from "lucide-react"
 import SectionHeader from "../Common/section-header"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { getFeaturedProducts } from "@/actions/product/product-select-actions"
+import ProductCard from "../Product/Product-card"
 
 
-const FeaturedSection = () => {
+const FeaturedSection = async() => {
 
-  const featuredProducts = [] 
+  const featuredProducts = await getFeaturedProducts()
 
+  console.log("Featured products: ", featuredProducts)
   return (
     <div>
        <section className="py-20 px-20 bg-muted/20">
@@ -24,11 +29,11 @@ const FeaturedSection = () => {
             </Link>
           </Button>
         </div>
-        {/* <div className="grid-wrapper">
+        <div className="grid-wrapper">
           {featuredProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
-        </div> */}
+        </div>
       </div>
     </section>
     </div>
